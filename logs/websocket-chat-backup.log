@@ -1,0 +1,427 @@
+2026-05-22 15:02:34.402  INFO 20144 --- [           main] c.e.w.WebsocketChatApplication           : Starting WebsocketChatApplication using Java 21 with PID 20144 (C:\dev\websocket-chat\build\classes\java\main started by USER in C:\dev\websocket-chat)
+2026-05-22 15:02:34.413  INFO 20144 --- [           main] c.e.w.WebsocketChatApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-22 15:02:35.270  INFO 20144 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-22 15:02:35.270  INFO 20144 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-22 15:02:35.486  INFO 20144 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 203 ms. Found 1 JPA repository interface.
+2026-05-22 15:02:35.553  INFO 20144 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-22 15:02:35.554  INFO 20144 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-22 15:02:35.576  INFO 20144 --- [           main] o.s.d.r.c.RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.websocket_chat.domain.chat.repository.ChatRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-22 15:02:35.576  INFO 20144 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2026-05-22 15:02:36.202  INFO 20144 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-22 15:02:36.225  INFO 20144 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-22 15:02:36.227  INFO 20144 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-05-22 15:02:36.335  INFO 20144 --- [           main] o.s.b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1863 ms
+2026-05-22 15:02:36.619  INFO 20144 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-22 15:02:36.717  INFO 20144 --- [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-05-22 15:02:37.420  INFO 20144 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-22 15:02:37.482  INFO 20144 --- [           main] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Starting...
+2026-05-22 15:02:37.753  INFO 20144 --- [           main] com.zaxxer.hikari.pool.HikariPool        : ChatHikariCP - Added connection org.postgresql.jdbc.PgConnection@4db16677
+2026-05-22 15:02:37.753  INFO 20144 --- [           main] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Start completed.
+2026-05-22 15:02:37.836  WARN 20144 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-22 15:02:37.891  INFO 20144 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/websocket_db?useUnicode=true&characterEncoding=utf8]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.10
+	Default catalog/schema: websocket_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-22 15:02:38.899  INFO 20144 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-22 15:02:39.063  INFO 20144 --- [           main] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-22 15:02:39.818  INFO 20144 --- [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-22 15:02:40.102  WARN 20144 --- [           main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-22 15:02:40.138  INFO 20144 --- [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-05-22 15:02:40.723  INFO 20144 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-22 15:02:40.748  INFO 20144 --- [           main] c.e.w.WebsocketChatApplication           : Started WebsocketChatApplication in 6.979 seconds (process running for 7.617)
+2026-05-22 15:03:00.124  INFO 20144 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : === Redis 스캔 및 RDB 백업 시작 ===
+2026-05-22 15:03:00.877  INFO 20144 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : Redis 버퍼가 비어있습니다. 스킵됩니다.
+2026-05-22 15:03:08.952  INFO 20144 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-22 15:03:08.952  INFO 20144 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-22 15:03:08.952  INFO 20144 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-05-22 15:03:09.169  INFO 20144 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 새로운 사용자 입장. 현재 사용자 수: 1
+2026-05-22 15:03:22.724  INFO 20144 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 새로운 사용자 입장. 현재 사용자 수: 2
+2026-05-22 15:03:34.663  INFO 20144 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429814576
+2026-05-22 15:03:34.663  INFO 20144 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 과연
+2026-05-22 15:03:42.155  INFO 20144 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429822151
+2026-05-22 15:03:42.155  INFO 20144 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 연동 잘 되나
+2026-05-22 15:03:43.652  INFO 20144 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429823649
+2026-05-22 15:03:43.653  INFO 20144 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 함 보자
+2026-05-22 15:03:46.781  INFO 20144 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429826778
+2026-05-22 15:03:46.782  INFO 20144 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 아 집 가고 시퓨다
+2026-05-22 15:03:48.058  INFO 20144 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429828056
+2026-05-22 15:03:48.059  INFO 20144 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 싶다
+2026-05-22 15:03:51.875  INFO 20144 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429831872
+2026-05-22 15:03:51.876  INFO 20144 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: ㄹㅇ 집가고싶냐
+2026-05-22 15:04:00.510  INFO 20144 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429840506
+2026-05-22 15:04:00.510  INFO 20144 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 에바임 아직도 두 시간 남음
+2026-05-22 15:04:07.105  INFO 20144 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429847101
+2026-05-22 15:04:07.105  INFO 20144 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: ㄹㅇ 두 시간 어떻게 버팀
+2026-05-22 15:04:17.783  INFO 20144 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429857780
+2026-05-22 15:04:17.783  INFO 20144 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 아
+2026-05-22 15:04:22.328  INFO 20144 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429862325
+2026-05-22 15:04:22.329  INFO 20144 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 집가면 뭐하지
+2026-05-22 15:04:28.876  INFO 20144 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429868872
+2026-05-22 15:04:28.876  INFO 20144 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 그러게 뭐하냐
+2026-05-22 15:04:34.487  INFO 20144 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429874484
+2026-05-22 15:04:34.487  INFO 20144 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 저녁은 뭐 먹을래
+2026-05-22 15:04:38.883  INFO 20144 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429878879
+2026-05-22 15:04:38.883  INFO 20144 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 맛있는거 먹고싶긴 한데
+2026-05-22 15:04:46.293  INFO 20144 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429886290
+2026-05-22 15:04:46.294  INFO 20144 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 그러게
+2026-05-22 15:04:49.637  INFO 20144 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429889634
+2026-05-22 15:04:49.637  INFO 20144 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 치킨 피자는 질려
+2026-05-22 15:04:52.191  INFO 20144 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429892188
+2026-05-22 15:04:52.191  INFO 20144 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 다른거 뭐 없나
+2026-05-22 15:04:55.060  INFO 20144 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429895057
+2026-05-22 15:04:55.061  INFO 20144 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 하
+2026-05-22 15:05:03.183  INFO 20144 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429903180
+2026-05-22 15:05:03.183  INFO 20144 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 좀 깔끔하고 기가막힌거 없나
+2026-05-22 15:05:20.554  INFO 20144 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429920551
+2026-05-22 15:05:20.555  INFO 20144 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 곧인가?
+2026-05-22 15:05:22.743  INFO 20144 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429922740
+2026-05-22 15:05:22.743  INFO 20144 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 그런듯
+2026-05-22 15:05:25.026  INFO 20144 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429925023
+2026-05-22 15:05:25.027  INFO 20144 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 에바긴 하네
+2026-05-22 15:05:31.289  INFO 20144 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429931249
+2026-05-22 15:05:31.290  INFO 20144 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 시청자_907: 아 맞다 아직 주식 장 마감 안했네
+2026-05-22 15:05:32.822  INFO 20144 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429932819
+2026-05-22 15:05:32.824  INFO 20144 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: dd
+2026-05-22 15:05:33.641  INFO 20144 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429933637
+2026-05-22 15:05:33.641  INFO 20144 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: ㅇㅇ
+2026-05-22 15:05:41.044  INFO 20144 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429941041
+2026-05-22 15:05:41.045  INFO 20144 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 이거 넘어가서 분석되는거 보고
+2026-05-22 15:05:45.910  INFO 20144 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429945907
+2026-05-22 15:05:45.910  INFO 20144 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 광전자 얼마인지 봐야지
+2026-05-22 15:05:55.705  INFO 20144 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779429955701
+2026-05-22 15:05:55.705  INFO 20144 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 시청자_230: 빠라바라바랑밤
+2026-05-22 15:06:00.013  INFO 20144 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : === Redis 스캔 및 RDB 백업 시작 ===
+2026-05-22 15:06:00.162  INFO 20144 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : RDB 27건 저장 완료, 파싱 실패 0건
+2026-05-22 15:06:00.165  INFO 20144 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 구글 Gemini 2.5 Flash 요약 분석 요청 송신 중...
+2026-05-22 15:06:00.763 ERROR 20144 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : Gemini AI 연동 중 오류 발생: 400 Bad Request on POST request for "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent": "{<EOL>  "error": {<EOL>    "code": 400,<EOL>    "message": "API key not valid. Please pass a valid API key.",<EOL>    "status": "INVALID_ARGUMENT",<EOL>    "details": [<EOL>      {<EOL>        "@type": "type.googleapis.com/google.rpc.ErrorInfo",<EOL>        "reason": "API_KEY_INVALID",<EOL>        "domain": "googleapis.com",<EOL>        "metadata": {<EOL>          "service": "generativelanguage.googleapis.com"<EOL>        }<EOL>      },<EOL>      {<EOL>        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",<EOL>        "locale": "en-US",<EOL>        "message": "API key not valid. Please pass a valid API key."<EOL>      }<EOL>    ]<EOL>  }<EOL>}<EOL>"
+org.springframework.web.client.HttpClientErrorException$BadRequest: 400 Bad Request on POST request for "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent": "{<EOL>  "error": {<EOL>    "code": 400,<EOL>    "message": "API key not valid. Please pass a valid API key.",<EOL>    "status": "INVALID_ARGUMENT",<EOL>    "details": [<EOL>      {<EOL>        "@type": "type.googleapis.com/google.rpc.ErrorInfo",<EOL>        "reason": "API_KEY_INVALID",<EOL>        "domain": "googleapis.com",<EOL>        "metadata": {<EOL>          "service": "generativelanguage.googleapis.com"<EOL>        }<EOL>      },<EOL>      {<EOL>        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",<EOL>        "locale": "en-US",<EOL>        "message": "API key not valid. Please pass a valid API key."<EOL>      }<EOL>    ]<EOL>  }<EOL>}<EOL>"
+	at org.springframework.web.client.HttpClientErrorException.create(HttpClientErrorException.java:106)
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:144)
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:119)
+	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:807)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:756)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:677)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:561)
+	at com.example.websocket_chat.domain.chat.service.GeminiService.analyzeChatRoom(GeminiService.java:70)
+	at com.example.websocket_chat.global.scheduler.ChatScheduler.flushChatToDb(ChatScheduler.java:105)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:133)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:371)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
+	at com.example.websocket_chat.global.scheduler.ChatScheduler$$SpringCGLIB$$0.flushChatToDb(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:128)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$1(ScheduledMethodRunnable.java:122)
+	at io.micrometer.observation.Observation.observe(Observation.java:569)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:122)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:88)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:94)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-05-22 15:06:00.789  INFO 20144 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : Redis 버퍼 청소 완료 27건
+2026-05-22 15:13:07.675  INFO 4664 --- [           main] c.e.w.WebsocketChatApplication           : Starting WebsocketChatApplication using Java 21 with PID 4664 (C:\dev\websocket-chat\build\classes\java\main started by USER in C:\dev\websocket-chat)
+2026-05-22 15:13:07.680  INFO 4664 --- [           main] c.e.w.WebsocketChatApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-22 15:13:08.563  INFO 4664 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-22 15:13:08.566  INFO 4664 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-22 15:13:08.731  INFO 4664 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 154 ms. Found 1 JPA repository interface.
+2026-05-22 15:13:08.805  INFO 4664 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-22 15:13:08.806  INFO 4664 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-22 15:13:08.830  INFO 4664 --- [           main] o.s.d.r.c.RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.websocket_chat.domain.chat.repository.ChatRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-22 15:13:08.830  INFO 4664 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2026-05-22 15:13:09.453  INFO 4664 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-22 15:13:09.475  INFO 4664 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-22 15:13:09.476  INFO 4664 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-05-22 15:13:09.574  INFO 4664 --- [           main] o.s.b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1833 ms
+2026-05-22 15:13:09.840  INFO 4664 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-22 15:13:09.916  INFO 4664 --- [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-05-22 15:13:10.694  INFO 4664 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-22 15:13:10.731  INFO 4664 --- [           main] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Starting...
+2026-05-22 15:13:10.975  INFO 4664 --- [           main] com.zaxxer.hikari.pool.HikariPool        : ChatHikariCP - Added connection org.postgresql.jdbc.PgConnection@49665f92
+2026-05-22 15:13:10.978  INFO 4664 --- [           main] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Start completed.
+2026-05-22 15:13:11.028  WARN 4664 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-22 15:13:11.063  INFO 4664 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/websocket_db?useUnicode=true&characterEncoding=utf8]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.10
+	Default catalog/schema: websocket_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-22 15:13:12.053  INFO 4664 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-22 15:13:12.113  INFO 4664 --- [           main] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-22 15:13:12.676  INFO 4664 --- [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-22 15:13:12.949  WARN 4664 --- [           main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-22 15:13:12.985  INFO 4664 --- [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-05-22 15:13:13.560  INFO 4664 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-22 15:13:13.575  INFO 4664 --- [           main] c.e.w.WebsocketChatApplication           : Started WebsocketChatApplication in 6.474 seconds (process running for 7.014)
+2026-05-22 15:13:27.945  INFO 4664 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-22 15:13:27.945  INFO 4664 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-22 15:13:27.948  INFO 4664 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-22 15:13:28.178  INFO 4664 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 새로운 사용자 입장. 현재 사용자 수: 1
+2026-05-22 15:13:28.975  INFO 4664 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 새로운 사용자 입장. 현재 사용자 수: 2
+2026-05-22 15:13:34.724  INFO 4664 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430414224
+2026-05-22 15:13:34.725  INFO 4664 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: 자자 다시
+2026-05-22 15:13:41.152  INFO 4664 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430421149
+2026-05-22 15:13:41.152  INFO 4664 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 채팅 어게인
+2026-05-22 15:13:48.543  INFO 4664 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430428540
+2026-05-22 15:13:48.544  INFO 4664 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 3분동안 혼잣말 해야함
+2026-05-22 15:13:57.016  INFO 4664 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430437012
+2026-05-22 15:13:57.017  INFO 4664 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: 분석 어떻게 되는지 개궁금함
+2026-05-22 15:13:58.397  INFO 4664 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430438395
+2026-05-22 15:13:58.398  INFO 4664 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: ㄹㅇ
+2026-05-22 15:14:02.542  INFO 4664 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430442540
+2026-05-22 15:14:02.542  INFO 4664 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 어떻게 처리하나
+2026-05-22 15:14:11.129  INFO 4664 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430451127
+2026-05-22 15:14:11.130  INFO 4664 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: 이제 한 1분 지낫음
+2026-05-22 15:14:14.269  INFO 4664 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430454265
+2026-05-22 15:14:14.269  INFO 4664 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 아직 안됐어
+2026-05-22 15:14:22.216  INFO 4664 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430462212
+2026-05-22 15:14:22.216  INFO 4664 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 한 50초 됐네
+2026-05-22 15:14:23.637  INFO 4664 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430463634
+2026-05-22 15:14:23.637  INFO 4664 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: gk
+2026-05-22 15:14:24.656  INFO 4664 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430464653
+2026-05-22 15:14:24.657  INFO 4664 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: 하
+2026-05-22 15:14:28.755  INFO 4664 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430468753
+2026-05-22 15:14:28.756  INFO 4664 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: 그래서 저녁 뭐먹냐고
+2026-05-22 15:14:31.941  INFO 4664 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430471938
+2026-05-22 15:14:31.941  INFO 4664 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 진짜 뭐먹냐
+2026-05-22 15:14:36.936  INFO 4664 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430476933
+2026-05-22 15:14:36.936  INFO 4664 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 집에 있는거 먹는것도 이제 힘들어
+2026-05-22 15:14:38.495  INFO 4664 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430478493
+2026-05-22 15:14:38.496  INFO 4664 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: ㄹㅇ
+2026-05-22 15:14:42.110  INFO 4664 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430482108
+2026-05-22 15:14:42.111  INFO 4664 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: 그냥 먹는것도 하루이틀이지
+2026-05-22 15:14:50.341  INFO 4664 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430490338
+2026-05-22 15:14:50.341  INFO 4664 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 먹는걸로 눈치봐야 하는게 ㄹㅇ 죽을맛
+2026-05-22 15:14:58.501  INFO 4664 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430498499
+2026-05-22 15:14:58.502  INFO 4664 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 시청자_930: 나 좀 먹고싶은거 먹게 놔두면 안되나
+2026-05-22 15:15:00.030  INFO 4664 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : === Redis 스캔 및 RDB 백업 시작 ===
+2026-05-22 15:15:00.150  INFO 4664 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : RDB 18건 저장 완료, 파싱 실패 0건
+2026-05-22 15:15:00.165  INFO 4664 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 구글 Gemini 2.5 Flash 요약 분석 요청 송신 중...
+2026-05-22 15:15:00.165  INFO 4664 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 현재 주입된 API 키의 총 길이: 88자
+2026-05-22 15:15:00.165  INFO 4664 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 호출하는 최종 URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
+2026-05-22 15:15:00.639 ERROR 4664 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : Gemini AI 연동 중 오류 발생: 400 Bad Request on POST request for "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent": "{<EOL>  "error": {<EOL>    "code": 400,<EOL>    "message": "API key not valid. Please pass a valid API key.",<EOL>    "status": "INVALID_ARGUMENT",<EOL>    "details": [<EOL>      {<EOL>        "@type": "type.googleapis.com/google.rpc.ErrorInfo",<EOL>        "reason": "API_KEY_INVALID",<EOL>        "domain": "googleapis.com",<EOL>        "metadata": {<EOL>          "service": "generativelanguage.googleapis.com"<EOL>        }<EOL>      },<EOL>      {<EOL>        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",<EOL>        "locale": "en-US",<EOL>        "message": "API key not valid. Please pass a valid API key."<EOL>      }<EOL>    ]<EOL>  }<EOL>}<EOL>"
+org.springframework.web.client.HttpClientErrorException$BadRequest: 400 Bad Request on POST request for "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent": "{<EOL>  "error": {<EOL>    "code": 400,<EOL>    "message": "API key not valid. Please pass a valid API key.",<EOL>    "status": "INVALID_ARGUMENT",<EOL>    "details": [<EOL>      {<EOL>        "@type": "type.googleapis.com/google.rpc.ErrorInfo",<EOL>        "reason": "API_KEY_INVALID",<EOL>        "domain": "googleapis.com",<EOL>        "metadata": {<EOL>          "service": "generativelanguage.googleapis.com"<EOL>        }<EOL>      },<EOL>      {<EOL>        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",<EOL>        "locale": "en-US",<EOL>        "message": "API key not valid. Please pass a valid API key."<EOL>      }<EOL>    ]<EOL>  }<EOL>}<EOL>"
+	at org.springframework.web.client.HttpClientErrorException.create(HttpClientErrorException.java:106)
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:144)
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:119)
+	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:807)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:756)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:677)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:561)
+	at com.example.websocket_chat.domain.chat.service.GeminiService.analyzeChatRoom(GeminiService.java:73)
+	at com.example.websocket_chat.global.scheduler.ChatScheduler.flushChatToDb(ChatScheduler.java:105)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:133)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:371)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
+	at com.example.websocket_chat.global.scheduler.ChatScheduler$$SpringCGLIB$$0.flushChatToDb(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:128)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$1(ScheduledMethodRunnable.java:122)
+	at io.micrometer.observation.Observation.observe(Observation.java:569)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:122)
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:88)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:94)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-05-22 15:15:00.651  INFO 4664 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : Redis 버퍼 청소 완료 18건
+2026-05-22 15:15:00.678  INFO 4664 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430500674
+2026-05-22 15:15:00.678  INFO 4664 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_147: 그러니까
+2026-05-22 15:16:18.885  INFO 4664 --- [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-22 15:16:18.898  INFO 4664 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-22 15:16:18.940  INFO 4664 --- [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-22 15:16:18.942  INFO 4664 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Shutdown initiated...
+2026-05-22 15:16:18.953  INFO 4664 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Shutdown completed.
+2026-05-22 15:16:18.967  INFO 4664 --- [SpringApplicationShutdownHook] c.e.w.domain.chat.handler.ChatHandler    : 사용자 퇴장. 현재 사용자 수: 1
+2026-05-22 15:16:18.967  INFO 4664 --- [SpringApplicationShutdownHook] c.e.w.domain.chat.handler.ChatHandler    : 사용자 퇴장. 현재 사용자 수: 0
+2026-05-22 15:20:36.449  INFO 16200 --- [           main] c.e.w.WebsocketChatApplication           : Starting WebsocketChatApplication using Java 21 with PID 16200 (C:\dev\websocket-chat\build\classes\java\main started by USER in C:\dev\websocket-chat)
+2026-05-22 15:20:36.456  INFO 16200 --- [           main] c.e.w.WebsocketChatApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-05-22 15:20:37.188  INFO 16200 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-22 15:20:37.191  INFO 16200 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-22 15:20:37.360  INFO 16200 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 156 ms. Found 1 JPA repository interface.
+2026-05-22 15:20:37.415  INFO 16200 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-22 15:20:37.417  INFO 16200 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-22 15:20:37.438  INFO 16200 --- [           main] o.s.d.r.c.RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.example.websocket_chat.domain.chat.repository.ChatRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-05-22 15:20:37.440  INFO 16200 --- [           main] o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2026-05-22 15:20:38.038  INFO 16200 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-22 15:20:38.051  INFO 16200 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-22 15:20:38.052  INFO 16200 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-05-22 15:20:38.133  INFO 16200 --- [           main] o.s.b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1618 ms
+2026-05-22 15:20:38.395  INFO 16200 --- [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-22 15:20:38.481  INFO 16200 --- [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-05-22 15:20:39.241  INFO 16200 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-22 15:20:39.295  INFO 16200 --- [           main] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Starting...
+2026-05-22 15:20:39.568  INFO 16200 --- [           main] com.zaxxer.hikari.pool.HikariPool        : ChatHikariCP - Added connection org.postgresql.jdbc.PgConnection@2f60e66a
+2026-05-22 15:20:39.573  INFO 16200 --- [           main] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Start completed.
+2026-05-22 15:20:39.626  WARN 16200 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-22 15:20:39.660  INFO 16200 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/websocket_db?useUnicode=true&characterEncoding=utf8]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.10
+	Default catalog/schema: websocket_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-22 15:20:40.795  INFO 16200 --- [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-22 15:20:40.850  INFO 16200 --- [           main] o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-22 15:20:41.430  INFO 16200 --- [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-22 15:20:41.704  WARN 16200 --- [           main] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-22 15:20:41.729  INFO 16200 --- [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-05-22 15:20:42.251  INFO 16200 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-22 15:20:42.269  INFO 16200 --- [           main] c.e.w.WebsocketChatApplication           : Started WebsocketChatApplication in 6.434 seconds (process running for 7.068)
+2026-05-22 15:20:53.444  INFO 16200 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-22 15:20:53.445  INFO 16200 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-22 15:20:53.447  INFO 16200 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-05-22 15:20:53.746  INFO 16200 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 새로운 사용자 입장. 현재 사용자 수: 1
+2026-05-22 15:20:53.882  INFO 16200 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 새로운 사용자 입장. 현재 사용자 수: 2
+2026-05-22 15:21:00.035  INFO 16200 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : === Redis 스캔 및 RDB 백업 시작 ===
+2026-05-22 15:21:00.529  INFO 16200 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430860407
+2026-05-22 15:21:00.530  INFO 16200 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 저녁 뭐먹지
+2026-05-22 15:21:00.634  INFO 16200 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : RDB 1건 저장 완료, 파싱 실패 0건
+2026-05-22 15:21:00.647  INFO 16200 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 구글 Gemini 2.5 Flash 요약 분석 요청 송신 중...
+2026-05-22 15:21:00.648  INFO 16200 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 현재 주입된 API 키의 총 길이: 39자
+2026-05-22 15:21:00.648  INFO 16200 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 호출하는 최종 URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyBiLAjmfOOxsA8WLpDHbS7o7aZ3JbuSEPc
+2026-05-22 15:21:04.747  INFO 16200 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430864744
+2026-05-22 15:21:04.748  INFO 16200 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: ㄹㅇ 뭐먹지
+2026-05-22 15:21:09.171  INFO 16200 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 
+=== [Gemini AI가 분석한 지난 3분간의 대화 내용] === 
+분석할 채팅 로그 데이터가 너무 적어서 정밀 분석은 불가능해. 현재 데이터로는 다음과 같이 파악된다.
+
+1.  **주요 대화 주제 핵심 요약:**
+    *   로그 데이터가 "그러니까" 한 단어뿐이라 구체적인 대화 주제를 파악할 수 없어.
+    *   어떤 내용에 대한 동의, 결론, 또는 질문의 시작일 수 있지만, 정보가 너무 부족해.
+
+2.  **현재 채팅방 유저들의 주된 감정 상태 분석:**
+    *   "그러니까"라는 한 단어로는 유저들의 감정 상태를 정확히 분석하기 어려워.
+    *   어떤 감정 상태도 단정할 수 없음.
+
+3.  **가장 많이 언급된 핵심 핫 키워드 Top 3:**
+    *   로그에 기록된 유일한 단어는 '그러니까'야.
+    *   의미 있는 핫 키워드 Top 3 선정은 불가능. (언급: '그러니까' 1회)
+2026-05-22 15:21:09.175  INFO 16200 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : Redis 버퍼 청소 완료 1건
+2026-05-22 15:21:14.036  INFO 16200 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430874033
+2026-05-22 15:21:14.037  INFO 16200 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 나 빼고 다른 사람들 맛있는거 먹으러 갔는데
+2026-05-22 15:21:20.196  INFO 16200 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430880192
+2026-05-22 15:21:20.196  INFO 16200 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 난 진짜 뭐 먹어야 할까 고민이군
+2026-05-22 15:21:27.591  INFO 16200 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430887586
+2026-05-22 15:21:27.591  INFO 16200 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 야채곱창 추천하는데
+2026-05-22 15:21:37.508  INFO 16200 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430897505
+2026-05-22 15:21:37.508  INFO 16200 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 어... 나쁘지 않은데 막 끌리지도 않긴 한다
+2026-05-22 15:21:43.441  INFO 16200 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430903439
+2026-05-22 15:21:43.442  INFO 16200 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 먹으면 먹어
+2026-05-22 15:21:49.869  INFO 16200 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430909866
+2026-05-22 15:21:49.870  INFO 16200 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 근데 뭔가 막 끌리지 않네
+2026-05-22 15:21:51.068  INFO 16200 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430911064
+2026-05-22 15:21:51.069  INFO 16200 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: ㄹㅇ
+2026-05-22 15:21:55.108  INFO 16200 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430915106
+2026-05-22 15:21:55.109  INFO 16200 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 먹을까
+2026-05-22 15:21:56.305  INFO 16200 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430916303
+2026-05-22 15:21:56.306  INFO 16200 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 말까
+2026-05-22 15:22:04.912  INFO 16200 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430924911
+2026-05-22 15:22:04.912  INFO 16200 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 다른 메뉴 생각 안나면 그냥 먹어볼까
+2026-05-22 15:22:09.029  INFO 16200 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430929018
+2026-05-22 15:22:09.033  INFO 16200 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 얼마정도 할라나
+2026-05-22 15:22:14.950  INFO 16200 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430934947
+2026-05-22 15:22:14.951  INFO 16200 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 한 2만원 언더로 먹고싶은데
+2026-05-22 15:22:18.398  INFO 16200 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430938395
+2026-05-22 15:22:18.399  INFO 16200 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 그러니까
+2026-05-22 15:22:29.495  INFO 16200 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430949492
+2026-05-22 15:22:29.495  INFO 16200 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 아아아 집 빨리 가고싶다
+2026-05-22 15:22:33.004  INFO 16200 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430953001
+2026-05-22 15:22:33.005  INFO 16200 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 퇴근하곳 ㅣㅍ어
+2026-05-22 15:22:36.691  INFO 16200 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430956689
+2026-05-22 15:22:36.691  INFO 16200 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 퇴근하고 싶어
+2026-05-22 15:22:46.970  INFO 16200 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430966966
+2026-05-22 15:22:46.971  INFO 16200 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 오늘 퇴근하면서
+2026-05-22 15:22:53.225  INFO 16200 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430973221
+2026-05-22 15:22:53.225  INFO 16200 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 저녁 딱 배달시켜서
+2026-05-22 15:22:58.151  INFO 16200 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430978147
+2026-05-22 15:22:58.151  INFO 16200 --- [http-nio-8080-exec-6] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 집 가서 딱 뜯고
+2026-05-22 15:23:07.142  INFO 16200 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430987139
+2026-05-22 15:23:07.143  INFO 16200 --- [http-nio-8080-exec-7] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 컴퓨터 앞에 앉아서
+2026-05-22 15:23:13.091  INFO 16200 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779430993088
+2026-05-22 15:23:13.092  INFO 16200 --- [http-nio-8080-exec-10] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 뱅송보면서 먹으면 개맛있겠네
+2026-05-22 15:23:21.082  INFO 16200 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779431001079
+2026-05-22 15:23:21.083  INFO 16200 --- [http-nio-8080-exec-9] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: ㄹㅇ 오늘 재밋는 컨텐츠 하나 해줬으면 좋겠다
+2026-05-22 15:23:22.736  INFO 16200 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779431002732
+2026-05-22 15:23:22.736  INFO 16200 --- [http-nio-8080-exec-1] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: ㄹㅇ
+2026-05-22 15:23:23.199  INFO 16200 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779431003196
+2026-05-22 15:23:23.200  INFO 16200 --- [http-nio-8080-exec-4] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: ㅋㅋ
+2026-05-22 15:23:41.473  INFO 16200 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779431021470
+2026-05-22 15:23:41.473  INFO 16200 --- [http-nio-8080-exec-3] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 오 신기하긴 하네 이거
+2026-05-22 15:23:50.799  INFO 16200 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779431030795
+2026-05-22 15:23:50.800  INFO 16200 --- [http-nio-8080-exec-5] c.e.w.domain.chat.handler.ChatHandler    : 시청자_601: 키 값
+2026-05-22 15:23:55.052  INFO 16200 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779431035050
+2026-05-22 15:23:55.053  INFO 16200 --- [http-nio-8080-exec-2] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: 잘 읽어갔구나
+2026-05-22 15:24:00.016  INFO 16200 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : === Redis 스캔 및 RDB 백업 시작 ===
+2026-05-22 15:24:00.069  INFO 16200 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : RDB 29건 저장 완료, 파싱 실패 0건
+2026-05-22 15:24:00.070  INFO 16200 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 구글 Gemini 2.5 Flash 요약 분석 요청 송신 중...
+2026-05-22 15:24:00.070  INFO 16200 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 현재 주입된 API 키의 총 길이: 39자
+2026-05-22 15:24:00.070  INFO 16200 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 호출하는 최종 URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyBiLAjmfOOxsA8WLpDHbS7o7aZ3JbuSEPc
+2026-05-22 15:24:12.012  INFO 16200 --- [   scheduling-1] c.e.w.domain.chat.service.GeminiService  : 
+=== [Gemini AI가 분석한 지난 3분간의 대화 내용] === 
+안녕, 실시간 대용량 채팅방 인프라 모니터링 AI 엔진이야. 지난 3분간 로그 정밀 분석한 결과 알려줄게.
+
+1.  **주요 대화 주제 핵심 요약**
+    *   저녁 메뉴를 뭘 먹을지 고민하고 야채곱창 등 특정 메뉴와 가격에 대해 얘기했어.
+    *   빨리 퇴근해서 집에서 배달 음식 시켜놓고 방송 보며 쉬고 싶다는 갈망이 컸어.
+    *   재미있는 방송 컨텐츠에 대한 기대감도 나눴어.
+
+2.  **현재 채팅방 유저들의 주된 감정 상태 분석**
+    피로감, 퇴근 후 휴식에 대한 기대감, 그리고 저녁 메뉴 고민으로 인한 약간의 우유부단함이 섞여 있어.
+
+3.  **가장 많이 언급된 핵심 핫 키워드 Top 3**
+    *   먹 (먹다 관련)
+    *   퇴근
+    *   ㄹㅇ
+2026-05-22 15:24:12.015  INFO 16200 --- [   scheduling-1] c.e.w.global.scheduler.ChatScheduler     : Redis 버퍼 청소 완료 29건
+2026-05-22 15:24:31.127  INFO 16200 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : Redis 캐싱 완료 >> Score: 1779431071125
+2026-05-22 15:24:31.128  INFO 16200 --- [http-nio-8080-exec-8] c.e.w.domain.chat.handler.ChatHandler    : 시청자_800: ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+2026-05-22 15:24:38.581  INFO 16200 --- [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-22 15:24:38.585  INFO 16200 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-22 15:24:38.624  INFO 16200 --- [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-22 15:24:38.627  INFO 16200 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Shutdown initiated...
+2026-05-22 15:24:38.638  INFO 16200 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ChatHikariCP - Shutdown completed.
+2026-05-22 15:24:38.650  INFO 16200 --- [SpringApplicationShutdownHook] c.e.w.domain.chat.handler.ChatHandler    : 사용자 퇴장. 현재 사용자 수: 1
+2026-05-22 15:24:38.650  INFO 16200 --- [SpringApplicationShutdownHook] c.e.w.domain.chat.handler.ChatHandler    : 사용자 퇴장. 현재 사용자 수: 0

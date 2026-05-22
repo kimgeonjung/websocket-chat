@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>채팅방</title>
+    <style>
+        body { font-family: sans-serif; margin: 30px; background-color: #f4f4f9; }
+        #chatBox { width: 500px; height: 400px; border: 1px solid #ccc; background: #fff; overflow-y: scroll; padding: 10px; margin-bottom: 10px; }
+        #messageInput { width: 400px; padding: 10px; }
+        button { padding: 10px 15px; }
+        .msg { margin-bottom: 8px; padding: 6px; border-radius: 4px; background: #eee; }
+    </style>
+</head>
+<body>
+
+    <h2>AI 소통 도우미 (웹소켓 실시간 테스트)</h2>
+    <div id="chatBox"></div>
+    <input type="text" id="messageInput" placeholder="채팅을 입력하세요..." onkeypress="if(event.keyCode==13) sendMessage()">
+    <button onclick="sendMessage()">전송</button>
+
+
+    <script>
+    // 테스트용 무작위 닉네임 생성 (예: 시청자_482)
+    const myNickname = "시청자_" + Math.floor(Math.random() * 1000);
+    
+    const socket = new WebSocket("ws://localhost:8080/ws/chat");
+    const chatBox = document.getElementById("chatBox");
+    const messageInput = document.getElementById("messageInput");
+
+    socket.onopen = function() {
+        appendMessage("시스템", "서버와 실시간 커넥션이 연결되었습니다.", Date.now());
+    };
+
+    // 서버로부터 브로드캐스트된 JSON 패킷 수신 처리
+    socket.onmessage = function(event) {
+        // [파싱] JSON 문자열을 자바스크립트 객체로 변환
+        const data = JSON.parse(event.data);
+        appendMessage(data.user, data.msg, data.time);
+    };
+
+    socket.onclose = function() {
+        appendMessage("시스템", "서버와의 연결이 종료되었습니다.", Date.now());
+    };
+
+    // 데이터 패키징 후 송신
+    function sendMessage() {
+        const msg = messageInput.value.trim();
+        if(msg !== "") {
+            // [직렬화: Serialization] 객체를 JSON 스트림으로 변환하여 인젝션
+            const packet = {
+                user: myNickname,
+                msg: msg,
+                time: Date.now() // 에포크 타임스탬프 밀리초 밀어넣기
+            };
+            
+            socket.send(JSON.stringify(packet));
+            messageInput.value = "";
+        }
+    }
+
+    // 뷰 렌더링 함수 포맷 변경
+    function appendMessage(user, msg, time) {
+        const date = new Date(time);
+        const timeStr = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        
+        const msgDiv = document.createElement("div");
+        msgDiv.className = "msg";
+        msgDiv.innerText = `[${timeStr}] ${user}: ${msg}`;
+        
+        chatBox.appendChild(msgDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: websocket-chat
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:15432/websocket_db?useUnicode=true&characterEncoding=utf8
+    username: chat_admin
+    password: qwer1234!
+    # 인프라 핵심: 하이카리 커넥션 풀 제어
+    hikari:
+      maximum-pool-size: 10 # 기본 커넥션 유지 개수
+      pool-name: ChatHikariCP
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update 
+    show-sql: true 
+    properties:
+      hibernate:
+        formatSql: true 
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  jackson:
+    time-zone: Asia/Seoul
+
+server:
+  port: 8080
+
+logging:
+  file:
+    name: logs/websocket-chat-backup.log
+  logback:
+    rollingpolicy:
+      max-history: 7 
+      max-file-size: 10MB 
+  level:
+    com.example.websocket_chat: INFO 
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } --- [%15t] %-40logger{39} : %m%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } --- [%15t] %-40logger{39} : %m%n"
+
+gemini:
+  api:
+    url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+    key: ${GEMINI_API_KEY}

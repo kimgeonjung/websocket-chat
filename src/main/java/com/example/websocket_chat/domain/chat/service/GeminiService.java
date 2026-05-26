@@ -31,7 +31,7 @@ public class GeminiService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMepper = new ObjectMapper();
 
-    public void analyzeChatRoom(List<ChatLog> chatLogs) {
+    public void analyze(List<ChatLog> chatLogs) {
         
         if(chatLogs == null || chatLogs.isEmpty()) return;
 

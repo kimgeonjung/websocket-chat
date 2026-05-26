@@ -102,7 +102,7 @@ public class ChatScheduler {
                     chatRepository.saveAll(dbInsertList);
                     log.info("RDB {}건 저장 완료, 파싱 실패 {}건", dbInsertList.size(), failedCount);    
 
-                    geminiService.analyzeChatRoom(dbInsertList);
+                    geminiService.analyze(dbInsertList);
                     
                 } catch (Exception e) {
                     log.error("RDB 저장 실패: {}", e.getMessage(), e);

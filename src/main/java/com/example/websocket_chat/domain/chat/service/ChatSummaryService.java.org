@@ -1,0 +1,64 @@
+package com.example.websocket_chat.domain.chat.service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.websocket_chat.domain.chat.entity.ChatLog;
+import com.example.websocket_chat.domain.chat.entity.SummaryLog;
+import com.example.websocket_chat.domain.chat.repository.ChatLogRepository;
+import com.example.websocket_chat.domain.chat.repository.SummaryLogRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class ChatSummaryService {
+    
+    private final ChatLogRepository chatLogRepository;
+    private final SummaryLogRepository summaryLogRepository;
+    private final GeminiService geminiService;
+
+    public ChatSummaryService(ChatLogRepository chatLogRepository, SummaryLogRepository summaryLogRepository, GeminiService geminiService){
+        this.chatLogRepository = chatLogRepository;
+        this.summaryLogRepository = summaryLogRepository;
+        this.geminiService = geminiService;
+    }
+
+    @Transactional
+    public void executeTask(){
+        LocalDateTime executionTime = LocalDateTime.now();
+        log.info("3분 대화 요약 파이프라인 시작. 기준 시간: {}", executionTime);
+
+        List<ChatLog> currentLogs = chatLogRepository.findAll();
+
+        if (currentLogs.isEmpty()){
+            log.info("3분간 수집된 채팅이 없습니다.");
+            return;
+        }
+
+        log.info("수집된 채팅: {} 개", currentLogs.size());
+
+        try {
+            log.info("Gemini 서버로 요약 요청 송신중 ... ");
+            String summaryResult = geminiService.analyze(currentLogs);
+            log.info("AI 요약본 생성 완료");
+
+            SummaryLog summaryLog = new SummaryLog(summaryResult);
+            summaryLogRepository.save(summaryLog);
+            log.info("AI 요약본 저장 완료");
+
+            log.info("요약 완료된 {}시점 이전 데이터 삭제중...", executionTime);
+            chatLogRepository.deleteOldCatLogs(executionTime);
+            log.info("원본 채팅 삭제 성공");
+
+            // TODO: 치지직 API 로직 추가 예정
+
+            
+        } catch (Exception e) {
+            log.error("3분 파이프라인 진행중 에러 발생. 원본 데이터 유지: {}", e.getMessage(), e);
+        }
+    }
+}

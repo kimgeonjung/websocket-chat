@@ -2,8 +2,6 @@ package com.example.websocket_chat.domain.chat.service;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.node.ArrayNode;
 import tools.jackson.databind.node.ObjectNode;
@@ -20,21 +18,23 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.websocket_chat.domain.chat.entity.ChatLog;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class GeminiService {
     
-    private static final Logger log = LoggerFactory.getLogger(GeminiService.class);
-
     @Value("${gemini.api.url}") private String apiUrl;
     @Value("${gemini.api.key}") private String apiKey;
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMepper = new ObjectMapper();
 
-    public void analyze(List<ChatLog> chatLogs) {
+    public String analyze(List<ChatLog> chatLogs) {
         
-        if(chatLogs == null || chatLogs.isEmpty()) return;
+        if(chatLogs == null || chatLogs.isEmpty()) return null;
 
+        String aiResult = "";
         try {
             StringBuilder sb = new StringBuilder();
             for(ChatLog logEntity : chatLogs){
@@ -67,26 +67,31 @@ public class GeminiService {
 
             String finalUrl = apiUrl + "?key=" + apiKey;
             log.info("구글 Gemini 2.5 Flash 요약 분석 요청 송신 중...");
-            log.info("현재 주입된 API 키의 총 길이: {}자", apiKey != null ? apiKey.length() : 0);
-            log.info("호출하는 최종 URL: {}", finalUrl);
+            // log.info("현재 주입된 API 키의 총 길이: {}자", apiKey != null ? apiKey.length() : 0);
+            // log.info("호출하는 최종 URL: {}", finalUrl);
 
             ResponseEntity<String> response = restTemplate.exchange(finalUrl, HttpMethod.POST, entity, String.class);
 
             if (response.getStatusCode() == HttpStatus.OK){
                 String responseBody = response.getBody();
                 var jsonResponse = objectMepper.readTree(responseBody);
-                String aiResult = jsonResponse.path("candidates").get(0)
+                aiResult = jsonResponse.path("candidates").get(0)
                 .path("content").path("parts").get(0).path("text")
                 .asString();
 
                 log.info("\n=== [Gemini AI가 분석한 지난 3분간의 대화 내용] === \n{}", aiResult);
+
+                
             } else {
                 log.warn("구글 서버 상태 이상 응답 코드: {}", response.getStatusCode());
+                aiResult = "no data";
             }
 
         } catch (Exception e) {
             log.error("Gemini AI 연동 중 오류 발생: {}", e.getMessage(), e);
         }
+    return aiResult;
     }
+    
     
 }

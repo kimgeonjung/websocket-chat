@@ -13,13 +13,13 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.example.websocket_chat.domain.chat.dto.ChatMessage;
 
+import lombok.extern.slf4j.Slf4j;
 import tools.jackson.databind.ObjectMapper;
 
 @Component
+@Slf4j
 public class ChatHandler extends TextWebSocketHandler {
-
-    private static final Logger log = LoggerFactory.getLogger(ChatHandler.class);
-    
+  
     // 사용자 세션. java 21 멀티스레드 환경을 위해 CopyOnWriteArrayList 사용
     private final CopyOnWriteArrayList<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
     private final ObjectMapper objectMepper = new ObjectMapper();

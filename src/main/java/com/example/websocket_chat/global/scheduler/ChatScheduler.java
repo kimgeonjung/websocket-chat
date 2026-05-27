@@ -1,135 +1,28 @@
 package com.example.websocket_chat.global.scheduler;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.example.websocket_chat.domain.chat.entity.ChatLog;
-import com.example.websocket_chat.domain.chat.repository.ChatRepository;
-import com.example.websocket_chat.domain.chat.service.GeminiService;
+import com.example.websocket_chat.domain.chat.service.ChatSummaryService;
 
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class ChatScheduler {
+        private final ChatSummaryService chatSummaryService;
 
-    private static final Logger log = LoggerFactory.getLogger(ChatScheduler.class);
-
-    private final StringRedisTemplate redisTemplate;
-    private final ChatRepository chatRepository;
-    private final GeminiService geminiService;
-    private final ObjectMapper objectMepper = new ObjectMapper();
-    private final String redisKey = "streamer:chat:room";
-    private final String dlqKey = "streamer:chat:dlq";
-
-    public ChatScheduler(StringRedisTemplate redisTemplate, ChatRepository chatRepository, GeminiService geminiService){
-        this.redisTemplate = redisTemplate;
-        this.chatRepository = chatRepository;
-        this.geminiService = geminiService;
+    public ChatScheduler(ChatSummaryService chatSummaryService){
+        this.chatSummaryService = chatSummaryService;
     }
 
-    // 테스트 10초 나중에 3분으로 변경 예정
     @Scheduled(cron = "0 */3 * * * *")
-    @Transactional
-    public void flushChatToDb(){ 
-        log.info("=== Redis 스캔 및 RDB 백업 시작 ===");
-
-        // 쌓인 데이터의 끝 지점을 확인하기 위해 가장 최근에 들어온 메시지의 타임스템프 스코어 저장
-        Set<ZSetOperations.TypedTuple<String>> latestElement = redisTemplate.opsForZSet().reverseRangeWithScores(redisKey, 0, 0);
-
-        if (latestElement == null || latestElement.isEmpty()){
-            log.info("Redis 버퍼가 비어있습니다. 스킵됩니다.");
-            return;
-        }
-
-        // 쌓인 데이터 중 가장 최근에 들어온 데이터의 타임스템프 
-        double maxScore = latestElement.iterator().next().getScore();
-
-        //  처음부터 가장 최근의 데이터를 가져옴
-        Set<String> chatLogs = redisTemplate.opsForZSet().rangeByScore(redisKey, 0, maxScore);
-
-        if (chatLogs != null && !chatLogs.isEmpty()){
-            List<ChatLog> dbInsertList = new ArrayList<>();
-            List<String> dlqList = new ArrayList<>();
-            int totalCount = chatLogs.size();
-            int failedCount = 0;
-
-            // RDB에 데이터 저장
-            for (String chatStr : chatLogs){
-                try {
-                    JsonNode jsonNode = objectMepper.readTree(chatStr);
-                    String user = jsonNode.get("user").asString();
-                    String msg = jsonNode.get("msg").asString();
-                    long timestamp = jsonNode.get("time").asLong();
-
-                    LocalDateTime createdAt = LocalDateTime.ofInstant(
-                        Instant.ofEpochMilli(timestamp), 
-                        ZoneId.of("Asia/Seoul")
-                    );
-
-                    dbInsertList.add(new ChatLog(user, msg, createdAt));
-                } catch (Exception e) {
-                    failedCount++;
-                    log.error("JSON 파싱중 예외 발생 (건너뜀): {}", e.getMessage());
-                    dlqList.add(chatStr);
-                }
-            }
-
-            if (!dlqList.isEmpty()){
-                for (String errLog : dlqList){
-                    redisTemplate.opsForList().rightPush(dlqKey, errLog);
-                }
-                log.info("깨진 데이터 {}건 {}로 이전 완료", dlqList.size(), dlqKey);
-            }
-
-            if (!dbInsertList.isEmpty()){
-                try {
-                    chatRepository.saveAll(dbInsertList);
-                    log.info("RDB {}건 저장 완료, 파싱 실패 {}건", dbInsertList.size(), failedCount);    
-
-                    geminiService.analyze(dbInsertList);
-                    
-                } catch (Exception e) {
-                    log.error("RDB 저장 실패: {}", e.getMessage(), e);
-                    emergencyDumpTofile(chatLogs);
-
-                    return;
-                }
-            }
-
-            // RDB에 데이터 저장 이후 저장된 지점까지 Redis에서 삭제
-            redisTemplate.opsForZSet().removeRangeByScore(redisKey, 0, maxScore);
-            log.info("Redis 버퍼 청소 완료 {}건", totalCount);
-        }
-
+    public void flushChatToDb() { 
+        log.info("3분 스케줄러 작동");
+        
+        // 실제 로직은 서비스에서 전부 처리함
+        chatSummaryService.executeTask();
+        
+        log.info("3분 스케줄러 작업 종료");
     }
-    private void emergencyDumpTofile(Set<String> rawLogs){
-            String timeStemp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
-            String dumpFileName = "logs/emergency_dump_" + timeStemp + ".json";
-
-            try (PrintWriter writer = new PrintWriter(new FileWriter(dumpFileName, true))){
-                for (String logStr : rawLogs){
-                    writer.println(logStr);
-                }
-                log.info("디스크 유실 방지 파일 백업 성공 -> {}", dumpFileName);
-            } catch (Exception e) {
-                log.error("로컬 디스크 파일 쓰기 실패 {}", e.getMessage());
-            }
-        }
-    
 }
